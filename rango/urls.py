@@ -9,4 +9,6 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('images', rangopages.about.images, name='images'),
     path('about/', rangopages.about.about_path, name='about'),
+    path('category/<slug:category_name_slug>/',
+         views.show_category, name='show_category'),
 ]

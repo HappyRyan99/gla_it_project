@@ -19,7 +19,7 @@
     {% if categories %}
         <ul>
             {% for category in categories %}
-                <li>{{ category.name }}-{{ category.views }}-{{ category.likes }}</li>
+                <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}-{{ category.views }}-{{ category.likes }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
