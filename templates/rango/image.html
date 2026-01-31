@@ -4,17 +4,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rango</title>
+    <title>Image</title>
 </head>
 <body>
-<h1>Rango says...</h1>
+<h1>Image says...</h1>
 <div>
     hey there partner! <br />
     <strong>{{ boldmessage }}</strong><br />
 </div>
 <div>
     <a href="/rango/about/">About</a><br />
-    <img src="{% static 'images/1.jpg' %}" style="width: 1vh" alt="rango" />
+    <img src="{% static 'images/1.jpg' %}" style="width: 3%" alt="rango" />
+    <br/>
+    <img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat."/>
 </div>
 </body>
 </html>
