@@ -20,8 +20,6 @@ def index(request):
     response_string = '<a href="https://www.bilibili.com">Bilibili</a><br/>' + url_html
     return HttpResponse(response_string)
 
+
 def page_not_found(request):
-    try:
-        return HttpResponse("xzxxx")
-    except:
-        return HttpResponse(404)
+    return HttpResponse(404)
