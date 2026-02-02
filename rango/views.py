@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from rango.models import Category
 from rango.models import Page
 
@@ -11,9 +11,11 @@ def index(request):
     # Place the list in our context_dict dictionary (with our boldmessage!)
     # that will be passed to the template engine.
     category_list = Category.objects.order_by('-likes')[:5]
+    views_list = Page.objects.order_by('-views')[:5]
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
+    context_dict['page_views'] = views_list
     # Render the response and send it back!
     return render(request, 'rango/index.html', context=context_dict)
 
@@ -38,13 +40,15 @@ def index_backup(request):
 
 
 def page_not_found(request):
-    return HttpResponse(404)
+    raise Http404("Where are you from?")
 
 
-def show_category(request, category_name_slug):
+def show_category(request, category_name_slug, page_num=0):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
     context_dict = {}
+    #TODO pass in page num or id
+    print(page_num)
     try:
         # Can we find a category name slug with the given name?
         # If we can't, the .get() method raises a DoesNotExist exception.

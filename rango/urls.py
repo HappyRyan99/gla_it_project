@@ -11,4 +11,6 @@ urlpatterns = [
     path('about/', rangopages.about.about_path, name='about'),
     path('category/<slug:category_name_slug>/',
          views.show_category, name='show_category'),
+    path('category/<slug:category_name_slug>/<int:page_num>',
+         views.show_category, name='show_category'),
 ]

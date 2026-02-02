@@ -17,6 +17,7 @@
 
 <div>
     {% if categories %}
+        <h2>Most Liked Categories</h2>
         <ul>
             {% for category in categories %}
                 <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}-{{ category.views }}-{{ category.likes }}</a></li>
@@ -25,6 +26,19 @@
     {% else %}
         <strong>There are no categories present.</strong>
     {% endif %}
+
+    {% if categories %}
+        <h2>Most Liked Categories</h2>
+        <ul>
+            {% for view in page_views %}
+                <li><a href="{{ view.url }}/">{{ view.title }} likes {{ view.views }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no categories present.</strong>
+    {% endif %}
+
+
 </div>
 
 <div>
