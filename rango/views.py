@@ -90,13 +90,14 @@ def add_category(request):
             new_cat = form.save(commit=True)
             # Now that the category is saved, we could confirm this.
             # For now, just redirect the user back to the index view.
-            # return redirect('/rango/')
             messages.success(request, f"Category {new_cat.name} add Successfully")
             return redirect('/rango/')
         else:
             # The supplied form contained errors -
             # just print them to the terminal.
             print(form.errors)
+
+
     # Will handle the bad form, new form, or no form supplied cases.
     # Render the form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})

@@ -7,6 +7,16 @@
 <body>
 <h>Add a Category</h>
 <div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <form id="category_form" method="post" action="/rango/add_category/">
 {#       {% csrf_token %} This is a Cross-Site Request Forgery (CSRF) token, which helps to protect and secure the#}
 {#        HTTP POST request that is initiated on the subsequent submission of a form.#}
